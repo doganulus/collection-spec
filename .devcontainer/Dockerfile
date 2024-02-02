@@ -11,7 +11,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
       python3 \
       python3-pip \
       && \
-    apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* 
+    apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd bouncmpe -g 1000 \
     && useradd -ms /bin/bash bouncmpe -g 1000 -u 1000 \
@@ -23,5 +23,6 @@ WORKDIR /home/bouncmpe
 
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --user ansible ansible-lint ansible-builder molecule
+RUN python3 -n pip install pre-commit
 
 ENV PATH=/home/bouncmpe/.local/bin:$PATH
