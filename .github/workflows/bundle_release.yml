@@ -1,0 +1,24 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  bundle-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm i -g @skriptfabrik/json-schema-bundler
+      - name: Bundle schemata
+        run: json-schema-bundler -p schema/ros_collection.schema.json > ros_collection.schema.json
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ros_collection.schema.json
