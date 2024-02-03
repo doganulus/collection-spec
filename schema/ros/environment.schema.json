@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "container": {
+      "$ref": "environment_container.schema.json"
+    },
+    "depends": {
+      "$ref": "environment_depends.schema.json"
+    },
+    "extends": {
+      "oneOf": [
+        {
+          "$ref": "collection.schema.json#/$defs/identifier"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "collection.schema.json#/$defs/identifier"
+          }
+        }
+      ]
+    },
+    "options": {
+      "$ref": "environment_options.schema.json"
+    }
+  },
+  "additionalProperties": false
+}

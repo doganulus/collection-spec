@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ROS Collection Manifest",
+  "description": "This schema defines the structure of a ROS Collection manifest file.",
+  "type": "object",
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9_][a-z0-9_-]*$"
+    }
+  },
+  "properties": {
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "commands": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z0-9_][a-z0-9_-]*$": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "container": {
+      "$ref": "environment_container.schema.json"
+    },
+    "context": {
+      "type": "string",
+      "format": "uri-reference",
+      "default": "."
+    },
+    "depends": {
+      "$ref": "environment_depends.schema.json"
+    },
+    "description": {
+      "type": "string"
+    },
+    "environments": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z0-9_][a-z0-9_-]*$": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "$ref": "environment.schema.json"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "format": {
+      "type": "string"
+    },
+    "license": {
+      "$ref": "#/$defs/identifier"
+    },
+    "license_file": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "maintainers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "name": {
+      "$ref": "#/$defs/identifier"
+    },
+    "namespace": {
+      "$ref": "#/$defs/identifier"
+    },
+    "options": {
+      "$ref": "environment_options.schema.json"
+    },
+    "readme": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      }
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-z0-9_][a-z0-9_-]*)?$"
+    }
+  },
+  "additionalProperties": false
+}

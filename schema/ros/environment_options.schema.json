@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "patternProperties": {
+    "^[a-z0-9_][a-z0-9_-]*$": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

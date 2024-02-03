@@ -1,0 +1,13 @@
+{
+  "oneOf": [
+    {
+      "$ref": "dependencies.schema.json"
+    },
+    {
+      "type": "array",
+      "items": {
+        "$ref": "dependencies.schema.json"
+      }
+    }
+  ]
+}
