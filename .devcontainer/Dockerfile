@@ -1,5 +1,8 @@
 FROM debian:12-slim
 
+ENV LANG="C.UTF-8"
+ENV LC_ALL="C.UTF-8"
+
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
@@ -13,16 +16,16 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
       && \
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd bouncmpe -g 1000 \
-    && useradd -ms /bin/bash bouncmpe -g 1000 -u 1000 \
-    && printf "bouncmpe:bouncmpe" | chpasswd \
-    && printf "bouncmpe ALL= NOPASSWD: ALL\\n" >> /etc/sudoers
+RUN groupadd bouncmpe -g 1000 && \
+    useradd -ms /bin/bash bouncmpe -g 1000 -u 1000 && \
+    printf "bouncmpe:bouncmpe" | chpasswd && \
+    printf "bouncmpe ALL= NOPASSWD: ALL\\n" >> /etc/sudoers
 
 USER bouncmpe
 WORKDIR /home/bouncmpe
 
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --user ansible ansible-lint ansible-builder molecule
-RUN python3 -n pip install pre-commit
+RUN python3 -m pip install pre-commit
 
 ENV PATH=/home/bouncmpe/.local/bin:$PATH
