@@ -7,6 +7,12 @@
     "depends": {
       "$ref": "environment_depends.schema.json"
     },
+    "env_vars": {
+      "$ref": "collection.schema.json#/$defs/env_vars"
+    },
+    "env_file": {
+      "$ref": "collection.schema.json#/$defs/env_file"
+    },
     "extends": {
       "oneOf": [
         {
