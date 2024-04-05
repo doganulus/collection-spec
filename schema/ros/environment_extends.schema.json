@@ -1,0 +1,13 @@
+{
+  "oneOf": [
+    {
+      "$ref": "collection.schema.json#/$defs/identifier"
+    },
+    {
+      "type": "array",
+      "items": {
+        "$ref": "collection.schema.json#/$defs/identifier"
+      }
+    }
+  ]
+}

@@ -1,6 +1,9 @@
 {
   "type": "object",
   "properties": {
+    "commands": {
+      "$ref": "environment_commands.schema.json"
+    },
     "container": {
       "$ref": "environment_container.schema.json"
     },
@@ -14,17 +17,7 @@
       "$ref": "collection.schema.json#/$defs/env_file"
     },
     "extends": {
-      "oneOf": [
-        {
-          "$ref": "collection.schema.json#/$defs/identifier"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "collection.schema.json#/$defs/identifier"
-          }
-        }
-      ]
+      "$ref": "environment_extends.schema.json"
     },
     "options": {
       "$ref": "environment_options.schema.json"

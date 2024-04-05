@@ -70,23 +70,7 @@
       }
     },
     "commands": {
-      "type": "object",
-      "patternProperties": {
-        "^[a-z0-9_][a-z0-9_-]*$": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          ]
-        }
-      },
-      "additionalProperties": false
+      "$ref": "environment_commands.schema.json"
     },
     "container": {
       "$ref": "environment_container.schema.json"
