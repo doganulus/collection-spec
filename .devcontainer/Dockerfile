@@ -25,7 +25,7 @@ USER bouncmpe
 WORKDIR /home/bouncmpe
 
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install --user ansible ansible-lint ansible-builder molecule
+RUN python3 -m pip install --user ansible ansible-lint ansible-builder molecule jmespath
 RUN python3 -m pip install pre-commit
 
 ENV PATH=/home/bouncmpe/.local/bin:$PATH
